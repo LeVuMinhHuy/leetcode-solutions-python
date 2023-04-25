@@ -1,7 +1,3 @@
----
-license: lgpl
----
-
 All credits belong to https://www.kaggle.com/datasets/erichartford/leetcode-solutions
 
 I collected only python solutions:
