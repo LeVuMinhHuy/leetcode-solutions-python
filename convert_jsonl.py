@@ -46,14 +46,8 @@ def convert(jsonl_file):
         os.remove("leetcode-solutions.json")
 
     with open("leetcode-solutions.json", "w") as f:
-        json.dump(result, f, indent=4)
-
-    if os.path.exists("leetcode-solutions-temp.jsonl"):
-        os.remove("leetcode-solutions-temp.csv")
-
-    with open("leetcode-solutions-temp.jsonl", "w") as f:
-        for item in result:
-            f.write(json.dumps(item) + "\n")
+        train = [{"train": result}]
+        json.dump(train, f, indent=4)
 
 if __name__ == "__main__":
-    convert("./leetcode-solutions.jsonl")
+    convert("../leetcode-solutions.jsonl")
