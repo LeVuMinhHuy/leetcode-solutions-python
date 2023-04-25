@@ -2,8 +2,7 @@ import json
 import os
 import sys
 
-
-def convert(jsonl_file):
+def convert(jsonl_file: str, dataset_name: str):
     with open(jsonl_file, "r") as f:
         jsonl_data = f.readlines()
         jsonl_data = [json.loads(x.strip()) for x in jsonl_data]
@@ -42,12 +41,12 @@ def convert(jsonl_file):
 
         result.append({"id": item["id"], "code_with_data": code_with_data, "code_only": code_only})
 
-    if os.path.exists("leetcode-solutions.json"):
-        os.remove("leetcode-solutions.json")
+    # store result to json file
+    with open(dataset_name + ".json", "w") as f:
+        json.dump(result, f, indent=4)
 
-    with open("leetcode-solutions.json", "w") as f:
-        train = [{"train": result}]
-        json.dump(train, f, indent=4)
 
 if __name__ == "__main__":
-    convert("../leetcode-solutions.jsonl")
+    dataset_name = "leetcode-solutions"
+    convert("../leetcode-solutions.jsonl", dataset_name)
+

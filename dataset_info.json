@@ -1,0 +1,14 @@
+{
+  "id": {
+    "dtype": "string",
+    "_type": "Value"
+  },
+  "code_with_data": {
+    "dtype": "string",
+    "_type": "Value"
+  },
+  "code_only": {
+    "dtype": "string",
+    "_type": "Value"
+  }
+}
