@@ -38,8 +38,16 @@ def convert(jsonl_file: str, dataset_name: str):
 
         code_with_data = slug + title + difficulty + content + answer + explanation
         code_only = answer
+        code_with_problem = content + answer
+        explanation_only = explanation
 
-        result.append({"id": item["id"], "code_with_data": code_with_data, "code_only": code_only})
+        result.append({
+            "id": item["id"], 
+            "code_with_data": code_with_data, 
+            "code_only": code_only, 
+            "code_with_problem": code_with_problem, 
+            "explanation_only": explanation_only
+            })
 
     # store result to json file
     with open(dataset_name + ".json", "w") as f:
