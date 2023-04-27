@@ -8,6 +8,7 @@ def convert(jsonl_file: str, dataset_name: str):
         jsonl_data = [json.loads(x.strip()) for x in jsonl_data]
 
     result = []
+    seq2seq_result = []
 
     for item in jsonl_data:
         if not item["answer"]:
@@ -49,9 +50,20 @@ def convert(jsonl_file: str, dataset_name: str):
             "explanation_only": explanation_only
             })
 
+        seq2seq_result.append({
+            "code": code_with_problem,
+            "target": explanation_only
+        })
+
     # store result to json file
     with open(dataset_name + ".json", "w") as f:
         json.dump(result, f, indent=4)
+
+    # store seq2seq result to jsonl file
+    with open(dataset_name + ".jsonl", "w") as f:
+        for item in seq2seq_result:
+            json.dump(item, f)
+            f.write("\n")
 
 
 if __name__ == "__main__":
