@@ -39,7 +39,7 @@ def convert(jsonl_file: str, dataset_name: str):
         code_with_data = slug + title + difficulty + content + answer + explanation
         code_only = answer
         code_with_problem = content + answer
-        explanation_only = explanation
+        explanation_only = item["answer"]["explanation"]
 
         result.append({
             "id": item["id"], 
